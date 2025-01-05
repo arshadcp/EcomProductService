@@ -25,8 +25,14 @@ public class FakeStoreClient {
 
    public List<FakeStoreProductResponseDTO> getAllProduct(){//we are returning an object but what we get from fakestore is json
        String getAllProductUrl=fakeStoreAPIBaseUrl.concat(fakeStoreAPIProductPath);
-       RestTemplate restTemplate=restTemplateBuilder.build();//we make the call using resttemplate
+       RestTemplate restTemplate=restTemplateBuilder.build();//we make the call from our serice to other service using resttemplate
        ResponseEntity<FakeStoreProductResponseDTO[]> productResponseList=restTemplate.getForEntity(getAllProductUrl, FakeStoreProductResponseDTO[].class );//to get object from json string
        return List.of(productResponseList.getBody());
+   }
+   public FakeStoreProductResponseDTO getProductById(int id){
+       String getProductUrl=fakeStoreAPIBaseUrl.concat(fakeStoreAPIProductPath).concat("/"+id);
+       RestTemplate restTemplate=restTemplateBuilder.build();
+       ResponseEntity<FakeStoreProductResponseDTO> productResponse=restTemplate.getForEntity(getProductUrl, FakeStoreProductResponseDTO.class );
+       return productResponse.getBody();
    }
 }
