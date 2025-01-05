@@ -1,5 +1,6 @@
 package dev.arshad.EcomProductService.Client;
 
+import dev.arshad.EcomProductService.DTO.FakeStoreCartResponseDTO;
 import dev.arshad.EcomProductService.DTO.FakeStoreProductResponseDTO;
 import dev.arshad.EcomProductService.Entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class FakeStoreClient {
     private String fakeStoreAPIBaseUrl;
     @Value("${fakestore.api.product.path}")
     private String fakeStoreAPIProductPath;
+    @Value("${fakestore.api.cart.for.user.path}")
+    private String fakeStoreAPICartForUser;
 
 
 
@@ -35,4 +38,27 @@ public class FakeStoreClient {
        ResponseEntity<FakeStoreProductResponseDTO> productResponse=restTemplate.getForEntity(getProductUrl, FakeStoreProductResponseDTO.class );
        return productResponse.getBody();
    }
+
+//    public FakeStoreCartResponseDTO getCartByUserId(int userId) throws Exception{//we are returning an object but what we get from fakestore is json
+//       if (userId<1){
+//           return null;
+//       }
+//        // url - https://fakestoreapi.com/carts?userId=1
+//        String getCartForUserUrl=fakeStoreAPIBaseUrl.concat(fakeStoreAPICartForUser).concat(String.valueOf(userId));
+//        RestTemplate restTemplate=restTemplateBuilder.build();//we make the call from our serice to other service using resttemplate
+//        ResponseEntity<FakeStoreCartResponseDTO> cartResponse=restTemplate.getForEntity(getCartForUserUrl,FakeStoreCartResponseDTO.class );//to get object from json string
+//        return cartResponse.getBody();
+//    }
+
+    public List<FakeStoreCartResponseDTO> getCartByUserId(int userId) {
+        // url - https://fakestoreapi.com/carts?userId=1
+        if (userId < 1){
+            return null;
+        }
+        String fakeStoreGetCartForUser = fakeStoreAPIBaseUrl.concat(fakeStoreAPICartForUser).concat(String.valueOf(userId));
+        RestTemplate restTemplate = restTemplateBuilder.build();
+        ResponseEntity<FakeStoreCartResponseDTO[]> cartResponse =
+                restTemplate.getForEntity(fakeStoreGetCartForUser, FakeStoreCartResponseDTO[].class);
+        return List.of(cartResponse.getBody());
+    }
 }

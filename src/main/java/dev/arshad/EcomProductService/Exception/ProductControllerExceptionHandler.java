@@ -1,16 +1,17 @@
 package dev.arshad.EcomProductService.Exception;
 
+import dev.arshad.EcomProductService.Controller.ProductController;
 import dev.arshad.EcomProductService.DTO.ExceptionResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-@ControllerAdvice
-public class ProductServiceExceptionHandler {
+@ControllerAdvice(basePackageClasses = ProductController.class)
+public class ProductControllerExceptionHandler {
 
-    @ExceptionHandler(ProductNotFoundException.class)
-    public ResponseEntity handleProductNotFoundException(ProductNotFoundException pe){
+    @ExceptionHandler({ProductNotFoundException.class, NoProductFoundException.class})
+    public ResponseEntity handleNoProductException(ProductNotFoundException pe){
         ExceptionResponseDTO exceptionResponseDTO=new ExceptionResponseDTO(
                 pe.getMessage(),
                 404
@@ -18,13 +19,14 @@ public class ProductServiceExceptionHandler {
         return new ResponseEntity<>(exceptionResponseDTO, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(NoProductFoundException.class)
-    public ResponseEntity handleNoProductFoundException(NoProductFoundException np) {
+
+    @ExceptionHandler(invalidInputException.class)
+    public ResponseEntity handleInvalidRequestException(invalidInputException invalidRequest) {
         ExceptionResponseDTO exceptionResponseDTO = new ExceptionResponseDTO(
-                np.getMessage(),
-                404
+               invalidRequest.getMessage(),
+                400
         );
-        return new ResponseEntity<>(exceptionResponseDTO, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(exceptionResponseDTO, HttpStatus.BAD_REQUEST);
 
     }
 
