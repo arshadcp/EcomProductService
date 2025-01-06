@@ -12,7 +12,7 @@ import java.util.List;
 
 
 
-@Service
+@Service("FakeStoreProductService")
 public class FakeStoreProductServiceImpl implements ProductService{
     @Autowired
     private FakeStoreClient fakeStoreClient;

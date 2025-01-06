@@ -39,19 +39,10 @@ public class FakeStoreClient {
        return productResponse.getBody();
    }
 
-//    public FakeStoreCartResponseDTO getCartByUserId(int userId) throws Exception{//we are returning an object but what we get from fakestore is json
-//       if (userId<1){
-//           return null;
-//       }
-//        // url - https://fakestoreapi.com/carts?userId=1
-//        String getCartForUserUrl=fakeStoreAPIBaseUrl.concat(fakeStoreAPICartForUser).concat(String.valueOf(userId));
-//        RestTemplate restTemplate=restTemplateBuilder.build();//we make the call from our serice to other service using resttemplate
-//        ResponseEntity<FakeStoreCartResponseDTO> cartResponse=restTemplate.getForEntity(getCartForUserUrl,FakeStoreCartResponseDTO.class );//to get object from json string
-//        return cartResponse.getBody();
-//    }
+
 
     public List<FakeStoreCartResponseDTO> getCartByUserId(int userId) {
-        // url - https://fakestoreapi.com/carts?userId=1
+
         if (userId < 1){
             return null;
         }

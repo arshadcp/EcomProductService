@@ -12,7 +12,7 @@ import java.util.List;
 public class ProductEntityToDto {
     public static ProductResponseDTO covertProductEntityToProductResponseDTO(Product product){
         ProductResponseDTO responseDTO=new ProductResponseDTO();
-            responseDTO.setProductId(product.getId());
+           // responseDTO.setProductId(product.getId());
             responseDTO.setTitle(product.getName());
             responseDTO.setDescription(product.getDescription());
             responseDTO.setCategory(product.getCategory());
