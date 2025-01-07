@@ -13,11 +13,11 @@ import java.util.List;
 
 
 @Service("FakeStoreProductService")
-public class FakeStoreProductServiceImpl implements ProductService{
+public class FakeStoreProductServiceImpl {
     @Autowired
     private FakeStoreClient fakeStoreClient;
 
-    @Override
+
     public List<FakeStoreProductResponseDTO> getAllProduct() throws NoProductFoundException {
         List<FakeStoreProductResponseDTO> fakeStoreProducts= fakeStoreClient.getAllProduct();
         if(fakeStoreProducts==null){
@@ -26,7 +26,7 @@ public class FakeStoreProductServiceImpl implements ProductService{
         return fakeStoreProducts;
     }
 
-    @Override
+
     public FakeStoreProductResponseDTO getProductById(int id) throws ProductNotFoundException{
       FakeStoreProductResponseDTO responseDTO=  fakeStoreClient.getProductById(id);
       if(responseDTO==null){
@@ -35,12 +35,12 @@ public class FakeStoreProductServiceImpl implements ProductService{
       return responseDTO;
     }
 
-    @Override
+
     public boolean deleteProduct(int id) {
         return true;
     }
 
-    @Override
+
     public Product updateProduct(Product product, int productId) {
         return null;
     }
