@@ -1,4 +1,4 @@
-package dev.arshad.EcomProductService.DTO;
+package dev.arshad.EcomProductService.DTO.FakeStoreDTO;
 
 import lombok.Getter;
 import lombok.Setter;

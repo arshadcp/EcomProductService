@@ -1,8 +1,7 @@
 package dev.arshad.EcomProductService.Client;
 
-import dev.arshad.EcomProductService.DTO.FakeStoreCartResponseDTO;
-import dev.arshad.EcomProductService.DTO.FakeStoreProductResponseDTO;
-import dev.arshad.EcomProductService.Entity.Product;
+import dev.arshad.EcomProductService.DTO.FakeStoreDTO.FakeStoreCartResponseDTO;
+import dev.arshad.EcomProductService.DTO.FakeStoreDTO.FakeStoreProductResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;

@@ -1,20 +1,17 @@
 package dev.arshad.EcomProductService.DTO;
 
-import dev.arshad.EcomProductService.Entity.Category;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.awt.*;
+import java.util.UUID;
 
 @Getter
 @Setter
-public class ProductResponseDTO {
-    private int productId;
+public class CreateProductRequestDTO {
+
     private String title;
     private double price;
     private String description;
-    private String category;
     private String imageURL;
-    private double rating;
-
+    private UUID categoryId;
 }

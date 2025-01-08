@@ -1,6 +1,7 @@
 package dev.arshad.EcomProductService.Service;
 
-import dev.arshad.EcomProductService.DTO.FakeStoreProductResponseDTO;
+import dev.arshad.EcomProductService.DTO.CreateProductRequestDTO;
+import dev.arshad.EcomProductService.DTO.ProductResponseDTO;
 import dev.arshad.EcomProductService.Entity.Product;
 import dev.arshad.EcomProductService.Exception.ProductNotFoundException;
 
@@ -8,11 +9,11 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ProductService {
-   List<Product> getAllProduct();
-   Product getProductById(UUID productId) throws ProductNotFoundException;
+   List<ProductResponseDTO> getAllProduct();
+   ProductResponseDTO getProductById(UUID productId) throws ProductNotFoundException;
    boolean deleteProduct(UUID productid);
-   Product createProduct(Product product);
-   Product updateProduct(Product updatedProduct,UUID productId);
-   Product getProduct(String productName);
-   List<Product> getProducts(double minPrice,double maxPrice);
+   ProductResponseDTO createProduct(CreateProductRequestDTO product);
+   ProductResponseDTO updateProduct(CreateProductRequestDTO updatedProduct,UUID productId);
+   ProductResponseDTO getProduct(String productName);
+   List<ProductResponseDTO> getProducts(double minPrice,double maxPrice);
 }

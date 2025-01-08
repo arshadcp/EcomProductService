@@ -1,7 +1,7 @@
 package dev.arshad.EcomProductService.Service;
 
 import dev.arshad.EcomProductService.Client.FakeStoreClient;
-import dev.arshad.EcomProductService.DTO.FakeStoreProductResponseDTO;
+import dev.arshad.EcomProductService.DTO.FakeStoreDTO.FakeStoreProductResponseDTO;
 import dev.arshad.EcomProductService.Entity.Product;
 import dev.arshad.EcomProductService.Exception.NoProductFoundException;
 import dev.arshad.EcomProductService.Exception.ProductNotFoundException;

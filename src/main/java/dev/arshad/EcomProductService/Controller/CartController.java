@@ -1,7 +1,7 @@
 package dev.arshad.EcomProductService.Controller;
 
 import dev.arshad.EcomProductService.Client.FakeStoreClient;
-import dev.arshad.EcomProductService.DTO.FakeStoreCartResponseDTO;
+import dev.arshad.EcomProductService.DTO.FakeStoreDTO.FakeStoreCartResponseDTO;
 import dev.arshad.EcomProductService.Exception.invalidCartException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,14 +15,7 @@ import java.util.List;
 public class CartController {
 
 
-//    @GetMapping("/cart/{userId}")
-//    public ResponseEntity getCartByUserId(@PathVariable ("userId") int userId) throws invalidCartException,Exception {
-//       List<FakeStoreCartResponseDTO> cartResponse=fakeStoreClient.getCartByUserId(userId);
-//       if(cartResponse==null){
-//           throw new invalidCartException("Cart not found for the userId"+userId);
-//       }
-//        return ResponseEntity.ok(cartResponse);
-//    }
+
 
     @Autowired
     private FakeStoreClient fakeStoreClient;
