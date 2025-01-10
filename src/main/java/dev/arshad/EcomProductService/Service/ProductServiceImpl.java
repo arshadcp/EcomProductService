@@ -53,6 +53,13 @@ public class ProductServiceImpl implements ProductService{
                 ()-> new CategoryNotFoundException("Category not found for Id:"+productRequestDTO.getCategoryId()));
         product.setCategory(savedCategory);
         Product savedproduct= productRepository.save(product);
+
+
+
+        List<Product> categoryProducts = savedCategory.getProducts();
+        categoryProducts.add(savedproduct);//adding products to category
+        savedCategory.setProducts(categoryProducts);
+        categoryRepository.save(savedCategory);
         return ProductEntityToDtoMapper.covertProductEntityToProductResponseDTO(savedproduct);
     }
     @Override

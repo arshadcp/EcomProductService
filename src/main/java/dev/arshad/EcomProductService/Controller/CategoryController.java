@@ -2,6 +2,7 @@ package dev.arshad.EcomProductService.Controller;
 
 import dev.arshad.EcomProductService.DTO.CategoryDTO.CategoryResponseDTO;
 import dev.arshad.EcomProductService.DTO.CategoryDTO.CreateCategoryRequestDTO;
+import dev.arshad.EcomProductService.Entity.Category;
 import dev.arshad.EcomProductService.Service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -40,6 +41,11 @@ public class CategoryController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> deleteCategory(@PathVariable("id") UUID categoryId){
         return ResponseEntity.ok(categoryService.deleteCategory(categoryId));
+    }
+
+    @GetMapping("totalPrice/{CategoryId}")
+    public ResponseEntity<Double> getProductPrice(@PathVariable("CategoryId") UUID categoryId){
+        return ResponseEntity.ok(categoryService.getTotalPriceForCategory(categoryId));
     }
 
 }

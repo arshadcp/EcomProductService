@@ -17,15 +17,19 @@ import java.util.List;
 public class CategoryEntityDTOMapper {
     public static CategoryResponseDTO covertCategoryEntityToCategorytResponseDTO(Category category){
         CategoryResponseDTO responseDTO=new CategoryResponseDTO();
-        responseDTO.setCategoryId(category.getId());
+
         responseDTO.setCategoryName(category.getName());
+        responseDTO.setCategoryId(category.getId());
 
         List<Product> products=category.getProducts();
         List<ProductResponseDTO> productResponseDTOS=new ArrayList<>();
-        for(Product product:products){
+        if(!(category.getProducts()==null || category.getProducts().isEmpty())){
+            for(Product product:products){
 
-            productResponseDTOS.add(ProductEntityToDtoMapper.covertProductEntityToProductResponseDTO(product));
-        }
+                productResponseDTOS.add(ProductEntityToDtoMapper.covertProductEntityToProductResponseDTO(product));
+            }
+       }
+        responseDTO.setProducts(productResponseDTOS);
         return responseDTO;
     }
 

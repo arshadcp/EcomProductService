@@ -32,9 +32,9 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Override
     public List<CategoryResponseDTO> getAllCategory() {
-        List<Category> savedCategorys=  categoryRepository.findAll();
+        List<Category> savedCategoris=  categoryRepository.findAll();
         List<CategoryResponseDTO> responseDTO= new ArrayList<>();
-        for(Category category:savedCategorys){
+        for(Category category:savedCategoris){
             responseDTO.add(CategoryEntityDTOMapper.covertCategoryEntityToCategorytResponseDTO(category));
         }
         return responseDTO;
@@ -57,5 +57,20 @@ public class CategoryServiceImpl implements CategoryService{
     public boolean deleteCategory(UUID categoryId) {
          categoryRepository.deleteById(categoryId);
          return true;
+    }
+    public double getTotalPriceForCategory(UUID categoryId){
+        Category category= categoryRepository.findById(categoryId).orElseThrow(
+                () -> new CategoryNotFoundException("Category not found with id:"+categoryId));
+        if(category.getProducts().isEmpty()){
+            return 0;
+        }else {
+            double sum = 0;
+            for (Product product : category.getProducts()) {
+                sum = sum + product.getPrice();
+            }
+            return sum;
+        }
+
+
     }
 }

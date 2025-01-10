@@ -7,7 +7,7 @@ import lombok.Setter;
 import java.awt.*;
 @Getter
 @Setter
-@Entity
+@Entity(name="ECOM_PRODUCT")
 public class Product extends BaseModel {
 
     private String name;

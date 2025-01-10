@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.apache.logging.log4j.CloseableThreadContext;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
@@ -17,12 +18,13 @@ import java.util.UUID;
 @Setter
 @MappedSuperclass
 public abstract class BaseModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
-    @CreationTimestamp
-    private Instant createdAt;
-    @UpdateTimestamp
-    private Instant updatedAt;
+  @Id
+ @GeneratedValue(strategy = GenerationType.AUTO)
+  private UUID id;
+  @CreationTimestamp
+  private Instant createdAt;
+  @UpdateTimestamp
+  private Instant updatedAt;
 
 }
+
