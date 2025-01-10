@@ -19,7 +19,7 @@ public class CategoryEntityDTOMapper {
         CategoryResponseDTO responseDTO=new CategoryResponseDTO();
 
         responseDTO.setCategoryName(category.getName());
-        responseDTO.setCategoryId(category.getId());
+      //  responseDTO.setCategoryId(category.getId());
 
         List<Product> products=category.getProducts();
         List<ProductResponseDTO> productResponseDTOS=new ArrayList<>();
