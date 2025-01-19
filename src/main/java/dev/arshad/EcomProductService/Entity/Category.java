@@ -6,14 +6,13 @@ import lombok.Setter;
 
 import java.util.List;
 import java.util.UUID;
-
+//(name="ecom_category")
 @Getter
 @Setter
-@Entity(name="ECOM_CATEGORY")
+@Entity
+@Table(name="ecom_category")
 public class Category extends BaseModel{
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+
     private String name;
     @OneToMany(mappedBy ="category" )
     private List<Product> products;
